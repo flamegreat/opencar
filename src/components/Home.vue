@@ -24,7 +24,7 @@
         <el-icon><Download /></el-icon> 转换并下载
       </el-button>
       <el-button type="success" @click="reverseAndPlay()" size="large">
-        <el-icon><VideoPlay /></el-icon> 预览（图片/视频）
+        <el-icon><VideoPlay /></el-icon> 预览 (图片/视频)
       </el-button>
     </div>
     
@@ -244,13 +244,32 @@ export default {
 }
 
 .button-group .el-button {
-  min-width: 180px;
-  width: 180px;
+  min-width: 185px;
+  width: 185px;
   text-align: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-shrink: 0;
+  margin: 0 !important;
+  padding: 0 16px !important;
+}
+
+/* 桌面端宽度够多时保持一行显示 */
+@media screen and (min-width: 769px) {
+  .button-group .el-button {
+    min-width: 185px;
+    width: 185px;
+  }
+}
+
+/* 移动端按钮换行时宽度更宽 */
+@media screen and (max-width: 768px) {
+  .button-group .el-button {
+    min-width: 200px;
+    width: 200px;
+  }
 }
 
 .el-button {
@@ -312,80 +331,161 @@ export default {
 /* 移动端适配 */
 @media screen and (max-width: 768px) {
   .app-card {
-    padding: 20px;
+    padding: 30px 20px;
+    border-radius: 16px;
   }
 
   .app-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
   }
 
   .upload-demo {
     padding: 15px 15px;
+    border-radius: 16px;
   }
 
   .upload-icon {
-    font-size: 1.5rem;
+    font-size: 3rem;
   }
 
   .el-upload__text {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    line-height: 1.4;
   }
 
   .selected-file {
-    padding: 8px 12px;
-    font-size: 0.875rem;
+    padding: 15px 20px;
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    border-radius: 10px;
   }
 
   .button-group {
-    gap: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
   }
 
   .el-button {
-    font-size: 0.875rem;
-    padding: 8px 16px;
+    font-size: 1rem;
+    padding: 15px 24px;
+    border-radius: 50px;
+    min-height: 50px;
+  }
+  
+  .button-group .el-button {
+    min-width: 185px;
+    width: 185px;
+    flex-shrink: 0;
+  }
+  
+  .el-button .el-icon {
+    font-size: 1.4rem;
+  }
+  
+  .video-container {
+    border-radius: 12px;
+    margin-top: 30px;
   }
 }
 
 /* 小屏幕移动端适配 */
 @media screen and (max-width: 480px) {
   .app-card {
-    padding: 15px;
+    padding: 25px 15px;
+    border-radius: 14px;
   }
 
   .app-title {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
   }
 
   .app-description {
-    font-size: 0.875rem;
+    font-size: 1.1rem;
+    line-height: 1.4;
   }
 
   .upload-demo {
-    padding: 30px 10px;
+    padding: 15px 15px;
+    border-radius: 14px;
   }
 
   .upload-icon {
-    font-size: 2rem;
+    font-size: 3.5rem;
   }
 
   .el-upload__text {
-    font-size: 0.875rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .selected-file {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
   }
 
   .button-group {
     flex-direction: column;
     align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .el-button {
+    font-size: 1rem;
+    padding: 14px 22px;
+    min-height: 48px;
   }
 
   .button-group .el-button {
-    font-size: 0.875rem;
-    padding: 10px 20px;
+    font-size: 1rem;
+    padding: 14px 22px;
     width: 100%;
-    max-width: 180px;
+    max-width: 185px;
+    flex-shrink: 0;
+  }
+  
+  .el-button .el-icon {
+    font-size: 1.3rem;
+  }
+  
+  .video-container {
+    border-radius: 10px;
+    margin-top: 25px;
+  }
+}
+
+/* 高分辨率设备适配 */
+@media screen and (max-width: 768px) and (-webkit-device-pixel-ratio: 2),
+       screen and (max-width: 768px) and (resolution: 192dpi),
+       screen and (max-width: 768px) and (resolution: 2dppx) {
+  /* 高分辨率设备的样式调整 */
+  html {
+    font-size: 16px;
+  }
+  
+  .app-card {
+    padding: 20px;
+  }
+  
+  .el-upload__text {
+    font-size: 0.9rem;
+  }
+  
+  .el-button {
+    font-size: 0.9rem;
+  }
+  
+  .button-group .el-button {
+    font-size: 0.9rem;
   }
 }
 </style>

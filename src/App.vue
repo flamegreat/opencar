@@ -332,13 +332,32 @@ export default {
 }
 
 .button-group .el-button {
-  min-width: 180px;
-  width: 180px;
+  min-width: 185px;
+  width: 185px;
   text-align: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  flex-shrink: 0;
+  margin: 0 !important;
+  padding: 0 16px !important;
+}
+
+/* 桌面端宽度够多时保持一行显示 */
+@media screen and (min-width: 769px) {
+  .button-group .el-button {
+    min-width: 185px;
+    width: 185px;
+  }
+}
+
+/* 移动端按钮换行时宽度更宽 */
+@media screen and (max-width: 768px) {
+  .button-group .el-button {
+    min-width: 200px;
+    width: 200px;
+  }
 }
 
 .el-button {
@@ -418,6 +437,7 @@ export default {
 @media screen and (max-width: 768px) {
   .ws-header {
     height: 60px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   }
 
   :deep(.el-header) {
@@ -425,54 +445,91 @@ export default {
   }
 
   .ws-logo h1 {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+    line-height: 60px;
   }
 
   .ws-content {
-    padding: 20px 15px;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 30px 10px !important;
+    margin: 0 !important;
   }
 
   .app-card {
-    padding: 20px;
+    width: 100% !important;
+    padding: 30px 20px;
+    border-radius: 16px;
   }
 
   .app-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
   }
 
   .upload-demo {
     padding: 15px 15px;
+    border-radius: 16px;
   }
 
   .upload-icon {
-    font-size: 1.5rem;
+    font-size: 3rem;
   }
 
   .el-upload__text {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    line-height: 1.4;
   }
 
   .selected-file {
-    padding: 8px 12px;
-    font-size: 0.875rem;
+    padding: 15px 20px;
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    border-radius: 10px;
   }
 
   .button-group {
+    display: flex;
+    justify-content: center;
     gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
   }
 
   .el-button {
-    font-size: 0.875rem;
-    padding: 8px 16px;
+    font-size: 1rem;
+    padding: 15px 24px;
+    border-radius: 50px;
+    min-height: 50px;
+  }
+  
+  .button-group .el-button {
+    min-width: 185px;
+    width: 185px;
+    flex-shrink: 0;
+  }
+  
+  .el-button .el-icon {
+    font-size: 1.4rem;
+  }
+  
+  .video-container {
+    border-radius: 12px;
+    margin-top: 30px;
   }
 
   .ws-footer {
-    height: 40px !important;
-    font-size: 0.75rem;
+    height: 60px !important;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ws-footer p {
+    font-size: 0.85rem;
+    line-height: 1.3;
   }
 }
 
@@ -480,6 +537,7 @@ export default {
 @media screen and (max-width: 480px) {
   .ws-header {
     height: 60px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   }
 
   :deep(.el-header) {
@@ -487,50 +545,126 @@ export default {
   }
 
   .ws-logo h1 {
-    font-size: 1rem;
+    font-size: 1.25rem;
+    line-height: 60px;
   }
+  
   .ws-content {
-    padding: 15px 10px;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 25px 10px !important;
+    margin: 0 !important;
   }
 
   .app-card {
-    padding: 15px;
+    width: 100% !important;
+    padding: 25px 15px;
+    border-radius: 14px;
   }
 
   .app-title {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
   }
 
   .app-description {
-    font-size: 0.875rem;
+    font-size: 1.1rem;
+    line-height: 1.4;
   }
 
   .upload-demo {
-    padding: 30px 10px;
+    padding: 15px 15px;
+    border-radius: 14px;
   }
 
   .upload-icon {
-    font-size: 2rem;
+    font-size: 3.5rem;
   }
 
   .el-upload__text {
-    font-size: 0.875rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .selected-file {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
   }
 
   .button-group {
     flex-direction: column;
     align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .el-button {
+    font-size: 1rem;
+    padding: 14px 22px;
+    min-height: 48px;
   }
 
   .button-group .el-button {
-    font-size: 0.875rem;
-    padding: 10px 20px;
+    font-size: 1rem;
+    padding: 14px 22px;
     width: 100%;
-    max-width: 180px;
+    max-width: 185px;
+    flex-shrink: 0;
+  }
+  
+  .el-button .el-icon {
+    font-size: 1.3rem;
+  }
+  
+  .video-container {
+    border-radius: 10px;
+    margin-top: 25px;
   }
 
+  .ws-footer {
+    height: 55px !important;
+    font-size: 0.85rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  }
+  
   .ws-footer p {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+}
+
+/* 高分辨率设备适配 */
+@media screen and (max-width: 768px) and (-webkit-device-pixel-ratio: 2),
+       screen and (max-width: 768px) and (resolution: 192dpi),
+       screen and (max-width: 768px) and (resolution: 2dppx) {
+  /* 高分辨率设备的样式调整 */
+  html {
+    font-size: 16px;
+  }
+  
+  .app-card {
+    padding: 20px;
+  }
+  
+  .el-upload__text {
+    font-size: 0.9rem;
+  }
+  
+  .el-button {
+    font-size: 0.9rem;
+  }
+  
+  .button-group .el-button {
+    font-size: 0.9rem;
+  }
+  
+  .ws-footer {
+    font-size: 0.8rem;
+  }
+  
+  .ws-footer p {
+    font-size: 0.75rem;
   }
 }
 </style>
